@@ -1,0 +1,227 @@
+[
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://data.pa.gob.ar/lod/resource/",
+      "prefixes": [
+        {
+          "name": "geo",
+          "uri": "http://www.opengis.net/ont/geosparql#"
+        },
+        {
+          "name": "sf",
+          "uri": "http://www.opengis.net/ont/sf#"
+        },
+        {
+          "name": "r2r",
+          "uri": "http://data.rvdata.us/vocab/id/class/"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "gl",
+          "uri": "http://schema.geolink.org/1.0/base/main#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "time",
+          "uri": "http://www.w3.org/2006/time#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "dc",
+          "uri": "http://purl.org/dc/elements/1.1/"
+        },
+        {
+          "name": "vodc",
+          "uri": "http://vocab.nerc.ac.uk/collection/P01/current/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "\"campaing/\"+value.urlify()",
+          "isRowNumberCell": false,
+          "columnName": "E2ESearchMD - E2ELinkage - datasourceId",
+          "rdfTypes": [
+            {
+              "uri": "http://data.rvdata.us/vocab/id/class/Campaign",
+              "curie": "http://data.rvdata.us/vocab/id/class/Campaign"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasTitle",
+              "curie": "gl:hasTitle",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#string",
+                "columnName": "E2ESearchMD - E2EObjectReference - objectTitle"
+              }
+            },
+            {
+              "uri": "http://purl.org/dc/elements/1.1/title",
+              "curie": "dc:title",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#string",
+                "columnName": "E2ESearchMD - E2EObjectReference - objectTitle"
+              }
+            },
+            {
+              "uri": "http://purl.org/dc/elements/1.1/description",
+              "curie": "dc:description",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#string",
+                "columnName": "E2ESearchMD - E2EObjectReference - objectDescription"
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasDescription",
+              "curie": "gl:hasDescription",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#string",
+                "columnName": "E2ESearchMD - E2EObjectReference - objectDescription"
+              }
+            },
+            {
+              "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
+              "curie": "foaf:primaryTopic",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#string",
+                "columnName": "E2ESearchMD - E2EObjectReference - descriptiveKeywords"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "lang": "es",
+                "columnName": "E2ESearchMD - E2EObjectReference - objectTitle"
+              }
+            },
+            {
+              "uri": "http://www.opengis.net/ont/geosparql#hasGeometry",
+              "curie": "geo:hasGeometry",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "\"polygon/\"+value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://www.opengis.net/ont/sf#Polygon",
+                    "curie": "sf:Polygon"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://www.opengis.net/ont/geosparql#asWKT",
+                    "curie": "geo:asWKT",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "\"POLYGON((\"+value+\" \"+ cells[\"E2ESearchMD - E2EGeographicBoundingBox - eastBoundLongitude\"].value+\" , \"+cells[\"E2ESearchMD - E2EGeographicBoundingBox - northBoundLatitude\"].value+\" \"+cells[\"E2ESearchMD - E2EGeographicBoundingBox - southBoundLatitude\"].value+\"))\"",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.opengis.net/ont/geosparql#wktLiteral",
+                      "columnName": "E2ESearchMD - E2EGeographicBoundingBox - westBoundLongitude"
+                    }
+                  },
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "lang": "en",
+                      "columnName": "E2ESearchMD - E2EGeographicBoundingBox - geographicName"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasStartDate",
+              "curie": "gl:hasStartDate",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "columnName": "E2ESearchMD - E2ETemporalExtent - beginDateTime"
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasEndDate",
+              "curie": "gl:hasEndDate",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "columnName": "E2ESearchMD - E2ETemporalExtent - endDateTime"
+              }
+            },
+            {
+              "uri": "http://purl.org/dc/elements/1.1/identifier",
+              "curie": "dc:identifier",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "E2ESearchMD - E2ELinkage - datasourceId"
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasVessel",
+              "curie": "gl:hasVessel",
+              "target": {
+                "nodeType": "resource",
+                "value": "http://data.pa.gob.ar/lod/resource/vessel/coriolis",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#Vessel",
+                    "curie": "gl:Vessel"
+                  }
+                ],
+                "links": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
