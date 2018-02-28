@@ -1,0 +1,365 @@
+[
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://data.pa.gob.ar/lod/resource/",
+      "prefixes": [
+        {
+          "name": "geo",
+          "uri": "http://www.opengis.net/ont/geosparql#"
+        },
+        {
+          "name": "sf",
+          "uri": "http://www.opengis.net/ont/sf#"
+        },
+        {
+          "name": "r2r",
+          "uri": "http://data.rvdata.us/vocab/id/class/"
+        },
+        {
+          "name": "gl",
+          "uri": "http://schema.geolink.org/1.0/base/main#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "dc",
+          "uri": "http://purl.org/dc/elements/1.1/"
+        },
+        {
+          "name": "vodc",
+          "uri": "http://vocab.nerc.ac.uk/collection/P01/current/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "resource",
+          "value": "http://data.pa.gob.ar/lod/resource/cruise/Arg-Leg-3",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#Cruise",
+              "curie": "gl:Cruise"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "literal",
+                "value": "Arg-Leg-3"
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasPlace",
+              "curie": "gl:hasPlace",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "\"place/\"+value.urlify()",
+                "isRowNumberCell": false,
+                "columnName": "UUID",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#Place",
+                    "curie": "gl:Place"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://www.opengis.net/ont/geosparql#asWKT",
+                    "curie": "geo:asWKT",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "\"POINT(\"+ cells[\"Longitude [degrees_east]\"].value+\" , \"+cells[\"Latitude [degrees_north]\"].value+\" )\"",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.opengis.net/ont/geosparql#wktLiteral",
+                      "columnName": "Longitude [degrees_east]"
+                    }
+                  },
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "lang": "es",
+                      "columnName": "Station"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasRegistrationDate",
+                    "curie": "gl:hasRegistrationDate",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#datetime",
+                      "columnName": "yyyy-mm-ddThh:mm:ss.sss"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasVessel",
+              "curie": "gl:hasVessel",
+              "target": {
+                "nodeType": "resource",
+                "value": "http://data.pa.gob.ar/lod/resource/vessel/coriolis",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#Vessel",
+                    "curie": "gl:Vessel"
+                  }
+                ],
+                "links": []
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#isCruiseOf",
+              "curie": "gl:isCruiseOf",
+              "target": {
+                "nodeType": "resource",
+                "value": "http://data.pa.gob.ar/lod/resource/campaing/coriolis",
+                "rdfTypes": [
+                  {
+                    "uri": "http://data.rvdata.us/vocab/id/class/Campaign",
+                    "curie": "http://data.rvdata.us/vocab/id/class/Campaign"
+                  }
+                ],
+                "links": []
+              }
+            },
+            {
+              "uri": "http://schema.geolink.org/1.0/base/main#hasDataset",
+              "curie": "gl:hasDataset",
+              "target": {
+                "nodeType": "resource",
+                "value": "http://data.pa.gob.ar/lod/resource/dataset/Arg-Leg-3",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#Dataset",
+                    "curie": "gl:Dataset"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Arg-Leg-3"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P07/current/CFSN0721/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/PRSDCT01/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P02/current/TEMP/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/CNDCZZ01/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/ASLTZZ01/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/DOXYSCKG/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/L22/current/TOOL0172/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/PHXXZZXX/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/TURBXXXX",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/S29/current/PE001223/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/NTRAMS02/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasMeasurementType",
+                    "curie": "gl:hasMeasurementType",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/P01/current/NEUTDENS/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#MeasurementType",
+                          "curie": "gl:MeasurementType"
+                        }
+                      ],
+                      "links": []
+                    }
+                  },
+                  {
+                    "uri": "http://schema.geolink.org/1.0/base/main#hasInstrument",
+                    "curie": "gl:hasInstrument",
+                    "target": {
+                      "nodeType": "resource",
+                      "value": "http://vocab.nerc.ac.uk/collection/L05/current/130/",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://schema.geolink.org/1.0/base/main#Instrument",
+                          "curie": "gl:Instrument"
+                        }
+                      ],
+                      "links": []
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
