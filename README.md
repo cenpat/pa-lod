@@ -1,2 +1,4 @@
 # pa-lod
 Pampa Azul Linked Open Data 
+
+In this proyect we present the initial steps to publish information about oceanographic campaigns carried out by oceanographic cruises that are part of the Pampa Azul Argentine initiative. The objective of this work is to improve the recovery and reuse of data through Semantic Web technologies and Linked Data in the domain of ocean sciences. Oceanographic cruises in this sense are central events for oceanographers. Consequently, information about these and the cruises involved must be shared and made recoverable. To achieve these goals, semantic Web standards and reference RDF schemas have been taken into account (NERC, R2R, Dublin Core, FOAF and GeoSPARQL). In addition to the description of the oceanographic cruisers we reuse the ontology pattern for oceanographic cruises.
