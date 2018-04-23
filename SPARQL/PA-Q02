@@ -1,0 +1,12 @@
+#Use Case 2: List datasets measuring concentration of 
+#nitrate per unit mass of the water body 
+
+SELECT DISTINCT ?person_name ?role
+SELECT ?dataset_title (COUNT(?measurement) as ?count)
+WHERE { 
+    ?dataset a gl:Dataset.
+    ?dataset dc:title ?dataset_title.
+    ?dataset gl:hasMeasurementType ?measurement
+FILTER ((datatype(?measurement)) = 	<http://vocab.nerc.ac.uk/collection/P01/current/NTRAMS02/>) 
+}
+GROUP BY ?dataset_title
