@@ -1,0 +1,20 @@
+#The following use case allows to explore the R2R dataset using a federated query 
+#to retrieve all the trajectories that exist in the R2R dataset and that are within 
+#a polygon defined in the FILTER clause, this polygon defines the exclusive 
+#Argentine economic area, so this query is interesting given that it allows to know 
+#which cruise ships were present at that place.
+
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/geosparql/function/>
+PREFIX sf: <http://www.opengis.net/ont/sf#>
+
+SELECT ?track
+WHERE {
+ SERVICE <http://data.rvdata.us/sparql> {
+   ?track a sf:LineString.
+   ?track geosparql:asWKT ?gWKT
+   FILTER (geof:sfIntersects(?gWKT,
+   "POLYGON((-63.80859375 -41.457136982923494, -47.109375 -41.457136982923494,
+   -47.109375 -50.9151558824997, -63.80859375 -50.9151558824997,
+   -63.80859375 -41.457136982923494))"^^sf:WktLiteral)) }
+}
