@@ -1,0 +1,20 @@
+#The following SPARQL query allows you to find the datasets 
+#that are overlapped in your geographic coverage. Since the datasets 
+#have a geometry associated geo:hasGeometry we can find those that 
+#overlap their coverage area with the function geo:sfOverlaps. 
+#This query is very interesting since it allows us to know which 
+#oceanographic campaigns were in the same area and thus be 
+#able to complement information of each one.
+
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/geosparql/function/>
+PREFIX gl: <http://schema.geolink.org/1.0/base/main#>
+
+SELECT ?m ?p
+WHERE {
+    ?m a gl:Dataset ;
+    geo:hasGeometry ?mgeo .
+    ?p a gl:Dataset ;
+    geo:hasGeometry ?pgeo .
+    ?mgeo geo:sfOverlaps ?pgeo .
+}
