@@ -1,0 +1,17 @@
+#Use Case 1: Persons who plays the role Co-Scientific Chief
+#On different occasions it is necessary to know the people who 
+#were in charge of an ocenographic campaign, since the roles 
+#in our dataset are instances of the class gl:Role, we can determine 
+#the role "Co-Scientific Chief" filtering all the instances of http://data.rvdata.us/id/roletype/100003
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>  
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gl: <http://schema.geolink.org/1.0/base/main#> 
+
+SELECT DISTINCT ?person_name ?role
+WHERE { 
+    ?p a foaf:Person.
+    ?p rdfs:label ?person_name.
+    ?p gl:hasRoleType ?role
+    FILTER regex(STR(?role), "roletype/100003")   
+}
