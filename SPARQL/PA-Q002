@@ -1,12 +1,15 @@
 #Use Case 2: List datasets measuring concentration of 
 #nitrate per unit mass of the water body 
 
-SELECT DISTINCT ?person_name ?role
-SELECT ?dataset_title (COUNT(?measurement) as ?count)
+PREFIX gl: <http://schema.geolink.org/1.0/base/main#> 
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+SELECT ?camp_title (COUNT(?measurement) as ?count)
 WHERE { 
-    ?dataset a gl:Dataset.
-    ?dataset dc:title ?dataset_title.
-    ?dataset gl:hasMeasurementType ?measurement
-FILTER ((datatype(?measurement)) = 	<http://vocab.nerc.ac.uk/collection/P01/current/NTRAMS02/>) 
+    ?cruise a gl:Cruise.
+    ?cruise gl:isCruiseOf ?campaing.
+    ?cruise gl:hasMeasurementType ?measurement.
+    ?campaing dc:title ?camp_title 
+    FILTER regex(STR(?measurement), "TOOL0172")     
 }
-GROUP BY ?dataset_title
+GROUP BY ?camp_title
